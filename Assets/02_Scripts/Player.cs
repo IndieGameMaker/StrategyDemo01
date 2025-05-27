@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum WeaponType
 {
@@ -14,10 +15,20 @@ public class Player : MonoBehaviour
     
     // 현재 무기
     [SerializeField] private IWeaponStrategy _currentWeapon;
+    // 적 타겟
+    public Enemy target;
 
     private void Start()
     {
         SetWeapon();
+    }
+
+    private void Update()
+    {
+        if (Mouse.current.leftButton.wasPressedThisFrame) // Input.GetMouseButtonDown(0)
+        {
+            _currentWeapon?.Attack(target);
+        }
     }
 
     private void SetWeapon()
