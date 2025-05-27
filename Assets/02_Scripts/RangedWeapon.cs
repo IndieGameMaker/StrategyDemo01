@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedWeapon : MonoBehaviour
+public class RangedWeapon : WeaponStrategyBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Attack(ITarget target)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("원거리 공격");
+        target?.TakeDamage(damage);
     }
 }
