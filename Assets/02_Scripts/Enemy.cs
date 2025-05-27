@@ -7,6 +7,11 @@ public class Enemy : MonoBehaviour, ITarget
     public void TakeDamage(float damage)
     {
         _health -= damage;
-        Debug.Log($"피격 : 데미지 {damage} , 남은 HP {_health}");
+        Logger.Log($"피격 : 데미지 {damage} , 남은 HP {_health}");
+
+        if (_health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
