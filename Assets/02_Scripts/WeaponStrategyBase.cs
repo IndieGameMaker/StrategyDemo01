@@ -5,6 +5,6 @@ public class WeaponStrategyBase : IWeaponStrategy
     
     public void Attack(ITarget target)
     {
-        
+     //   
     }
 }
