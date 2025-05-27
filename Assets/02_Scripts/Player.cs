@@ -29,6 +29,15 @@ public class Player : MonoBehaviour
         {
             _currentWeapon?.Attack(target);
         }
+
+        if (Keyboard.current.digit1Key.wasPressedThisFrame) // Input.GetKeyDown(KeyCode.Alpha1)
+        {
+            SwitchWeapon(WeaponType.Melee);
+        }
+        if (Keyboard.current.digit2Key.wasPressedThisFrame) // Input.GetKeyDown(KeyCode.Alpha2)
+        {
+            SwitchWeapon(WeaponType.Ranged);
+        }
     }
 
     private void SetWeapon()
@@ -38,5 +47,11 @@ public class Player : MonoBehaviour
         
         // 기본 무기 설정
         _currentWeapon = _weapons[WeaponType.Melee];
+    }
+
+    private void SwitchWeapon(WeaponType weaponType)
+    {
+        _currentWeapon = _weapons[weaponType];
+        Logger.Log($"무기 변경: {weaponType}");
     }
 }
